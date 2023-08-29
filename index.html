@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Namaste React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- Basic way to add h1 tag in dom with using javascript. -->
+    <!-- <script>
+      const heading = document.createElement("h1");
+      heading.innerHTML = "Hello World from java script";
+
+      const root = document.getElementById("root");
+      root.appendChild(heading);
+    </script> -->
+    <!-- Core react library -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <!-- to modify the document object model like a bridge  this is why React-dom is being used -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="./App.js"></script>
+  </body>
+</html>
