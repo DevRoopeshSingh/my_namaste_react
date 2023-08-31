@@ -15,6 +15,9 @@
 // const child = React.createElement("div", { id: "child" });
 //ReactElement(Object) => HTML(Browser Understand)
 
+import React from "react";
+import ReactDOM from "react-dom/client";
+
 const parent = React.createElement("div", { id: "parent" }, [
   //passing in array to act like a sibling elements h1 and h2
   React.createElement("div", { id: "child" }, [
@@ -33,7 +36,7 @@ const parent = React.createElement("div", { id: "parent" }, [
     React.createElement(
       "h1",
       { id: "header-nested-tag-1" },
-      "Nested header Tag"
+      "Nested header Tag from namaste react"
     ),
     React.createElement(
       "h2",
