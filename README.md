@@ -132,8 +132,8 @@ Chapter 2 Theory:
     A.Browserlist is a configuration tool that defines which browser your project should support its used to optimize compatibility for the front-end development.
 
 15. Read about ^-caret and ~-Tilda
-    A.Caret(^): Allows updates within the same major version.
-    Tilda(~): Allows updates within the same minor version.
+    A.Caret(^): Allows updates within the same minor version.
+    Tilda(~): Allows updates within the same major version.
 
 16. Read about Scripts types in HTML(MDN Docs)
     A.The 'script' elements in html is used to include Javascript code. The type attribute specifies the type of content usually set as 'text/javascript'. In modern HTML the attribute is often omitted as browser assume javascript by default.
