@@ -334,3 +334,48 @@ Assignment 03 - Laying the Foundation
     In this example, the `Content` component is composed within the `Page` component, creating a hierarchy.
 
 By composing components in React, you can build complex user interfaces in a modular and organized way, making your code easier to understand, maintain, and extend. It also encourages the reuse of components, leading to more efficient development and better code maintainability.
+
+Assignment 04 - Talk is cheap,Show me code!
+
+Theory:
+
+1. Is JSX mandatory for React?
+   A.No, JSX is not mandatory for React, but it is highly recommended. JSX is a more readable and expressive way to define React elements and components. While you can write React without JSX by using React.createElement, JSX simplifies the process and is the standard way of defining components in React.
+
+2. Is ES6 mandatory for React?
+   A.ES6 (ECMAScript 2015) features are not mandatory for React, but they are commonly used and recommended. ES6 features like arrow functions, classes, destructuring, and let and const declarations can make your React code more concise and readable. However, React itself does not require ES6; you can write React applications using ES5 JavaScript.
+
+3. {TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent><TitleComponent/>}
+   A.
+   {TitleComponent}: This is a reference to the TitleComponent variable or component. It's typically used when you want to pass the component itself as a prop to another component.
+
+   {<TitleComponent/>}: This is JSX syntax and represents the rendering of the TitleComponent. It will create an instance of TitleComponent when rendered.
+
+   {<TitleComponent><TitleComponent/>}: This JSX syntax is incorrect because it's attempting to nest TitleComponent elements without any parent element. It should be wrapped in a parent element.
+
+4. How can I comment in JSX?
+   A.You can add comments in JSX using curly braces {/_ Your comment here _/}. For single-line comments, you can use // as you would in regular JavaScript.
+
+5. What is <React.Fragments></React.Fragments> and <></>
+   A.<React.Fragment> and <></> (short syntax) are used to group multiple JSX elements without adding extra nodes to the DOM. This is especially useful when you need to return adjacent JSX elements from a component without wrapping them in a container div or other element.
+
+6. what is virtual DOM?
+   A.The virtual DOM (VDOM) is a concept in React where an in-memory representation of the actual DOM is maintained. React uses the virtual DOM to optimize updates by comparing it with the real DOM and applying only the necessary changes. This process increases performance and reduces unnecessary re-rendering of components.
+
+7. what is Reconciliation in React?
+   A.Reconciliation in React is the process of updating the virtual DOM and determining which parts of the actual DOM need to be modified to reflect the latest component state. React's diffing algorithm (reconciliation) ensures that only the necessary changes are made, minimizing performance overhead.
+
+8. what is React Fiber?
+   A.React Fiber is an internal architectural change in React's core algorithm that allows for asynchronous rendering and better control over the rendering process. It improves the ability to interrupt rendering and handle concurrent updates, leading to smoother user interfaces.
+
+9. Why we need keys in React? when do we need keys in React?
+   A.Keys in React are used to help React identify which items have changed, been added, or been removed in a list of components. They are essential when rendering dynamic lists using map() or other iterators. Keys ensure efficient updates and should be unique within the list.
+
+10. Can we use index as keys in React?
+    A.While using the index as keys is possible, it is generally not recommended for dynamic lists with items that can change or be reordered. It may lead to performance issues and incorrect rendering in some cases. It's better to use unique and stable identifiers as keys.
+
+11. What is props in React? Ways to use them?
+    A.Props (short for properties) in React are used to pass data from a parent component to a child component. They are read-only and help you create dynamic and reusable components. You can access props in functional components as function arguments and in class components via this.props.
+
+12. What is Config Driven UI?
+    A.Config-driven UI is an approach where the user interface and its behavior are defined using configuration data rather than hardcoding them into the application's code. This approach allows for
