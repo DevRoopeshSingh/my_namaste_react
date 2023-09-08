@@ -395,3 +395,23 @@ Theory:
 
 12. What is Config Driven UI?
     A.Config-driven UI is an approach where the user interface and its behavior are defined using configuration data rather than hardcoding them into the application's code. This approach allows for
+
+
+
+/*
+* Header
+  ->Logo
+  ->Nav link
+  Body
+  -> Search bar
+  ->  RestaurantContainer
+      -> IMG
+      -> Star Ratting 
+      -> Name of the restaurant
+      -> cuisine,etc,delivery time
+ * Footer
+  -> Copyright
+  -> Links
+  -> Address
+  -> Contact
+*/

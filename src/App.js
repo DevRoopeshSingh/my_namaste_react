@@ -1,72 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const logo = new URL("/assets/LogoDesign.png", import.meta.url);
+import Header from "./component/Header";
+import RestaurantCard  from "./component/RestaurantCard";
 
-/*
-* Header
-  ->Logo
-  ->Nav link
-*Body
-  -> Search bar
-  ->  RestaurantContainer
-      -> IMG
-      -> Star Ratting 
-      -> Name of the restaurant
-      -> cuisine,etc,delivery time
- *Footer
- -> Copyright
- -> Links
- -> Address
--> Contact
-*/
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div id="logo-container">
-        <img className="logo" src={logo} alt="logo" />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Contact us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
 
-const RestaurantCard = ({ resData }) => {
-  // const { resName, cuisine } = props;
-  const {
-    id,
-    name,
-    cloudinaryImageId,
-    cuisines,
-    avgRating,
-    feeDetails,
-    costForTwo,
-    sla,
-  } = resData?.info;
-
-  return (
-    <div className="restaurant-card">
-      <img
-        alt="rest-image"
-        className="res-logo"
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
-      />
-      <h3>{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{avgRating} stars</h4>
-      <h4>{feeDetails.totalFee}</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{sla.slaString}</h4>
-    </div>
-  );
-};
 
 const restaurantData = [
   {
