@@ -10,11 +10,11 @@ Assignment 01 Inception:
     HTML Abbreviation:
     If you type div>p#myId.myClass\*3, and then trigger the Emmet expansion (often by pressing the "Tab" key), Emmet will generate the following HTML code:
 
-       <div>
+        "<div>
             <p id="myId" class="myClass"></p>
             <p id="myId" class="myClass"></p>
             <p id="myId" class="myClass"></p>
-        </div>
+        </div>"
 
         CSS Abbreviation:
         If you type bgc:red;fw:bold, and then trigger the Emmet expansion, Emmet will generate the following
@@ -41,7 +41,9 @@ Assignment 01 Inception:
     - The version is meant for development purpose.
     - It includes additional warning and debugging information to help developer to identify potential issue during the development.
     - The file size is larger due to the included debugging information.
+
       2.React.Production.js
+
     - This version is intended for the production deployment.
     - It is optimized for performance and has minimized the size.
     - It exclude the debugging information and warning found in the development version making it suitable for using it in production environment.
@@ -74,7 +76,7 @@ Assignment 02: Ignite our App
    A.Parcel and webpack are both popular build tool used in the web development to bundle optimize and manage assets for modern web application. They help developer to streamline the process of preparing code and assets for deployment to production environment.
 
 3. What is .parcel-cache
-   A.The .parcel-cache directory is created bu the parcel bundler to store cached build results and optimizations, which speeds uo future builds of your project by avoiding redundant processing. its safe to delete if you want to clear cached data.
+   A.The .parcel-cache directory is created by the parcel bundler to store cached build results and optimizations, which speeds up future builds of your project by avoiding redundant processing. its safe to delete if you want to clear cached data.
 
 4. What is NPX?
    A.NPX is command line tool that comes with npm(node package manager).It is used to run the package and binaries from the npm registry temporarily without having to install them globally on your system.It is particularly useful for executing the command line tools provided by the npm packages without the need for manual installation.
@@ -104,7 +106,7 @@ Assignment 02: Ignite our App
    - Parcel enables automatic code splitting which means your application is split into smaller chunks that are loaded only when needed.
    - The optimize initial load times and improves performance as users only download the parts of the application they interact with.
 
-   4. Hot module replacement:
+   4. Hot Module Replacement:
 
    - Just like webpack,parcel supports HMR, allowing developers to see instant code changes in the browser without page refresh.
    - This accelerates the development process and improve the productivity by maintaining application state during updates.
@@ -112,10 +114,10 @@ Assignment 02: Ignite our App
    5. Fast build speed:
 
    - Parcel caching mechanism optimizes build times by reusing cached results for unchanged assets.
-   - It laverages parallel processing to speed up builds, resulting in quicker turnaround times for development .
+   - It leverages parallel processing to speed up builds, resulting in quicker turnaround times for development .
 
 9. What is .gitIgnore ? what should we add and add not into it?
-   A. '.gitIgnore' file specifies files and directories to exclude from the version control add generated files,dependencies and sensitive data.Don't add important config files or essential project code. Keep the repository clean and focused in the code that needs to be shared.
+   A. '.gitIgnore' file specifies files and directories to exclude from the version control add generated files,dependencies and sensitive data. Don't add important config files or essential project code. Keep the repository clean and focused in the code that needs to be shared.
 
 10. What is the difference between package.json and package-lock.json ?
     A.Package.json is for project details and dependencies package-lock-json ensures consistent,exact dependency versions for reliable builds.
@@ -132,7 +134,7 @@ Assignment 02: Ignite our App
 14. what is 'Browserlists' Read about the diff bundlers:Vite, webpack, parcel
     A.Browserlist is a configuration tool that defines which browser your project should support its used to optimize compatibility for the front-end development.
 
-15. Read about ^-caret and ~-Tilda
+15. Read about (^)caret and (~)Tilda
     A.Caret(^): Allows updates within the same minor version.
     Tilda(~): Allows updates within the same major version.
 
@@ -145,7 +147,7 @@ Assignment 02: Ignite our App
 - Local Server
 - HMR - Hot module replacement
 - File Watching Algorithm (Written in C++)
-- caching Faster Builds
+- Caching Faster Builds
 - Image Optimization
 - Minification
 - Bundling
@@ -164,11 +166,11 @@ Assignment 02: Ignite our App
 Assignment 03 - Laying the Foundation
 
 1.  What is JSX?
-    A. JSX stands for "Javascript XML" and it's a syntax extension for JavaScript often used with React.js JSX allows you to write HTML like code within your javascript code.making it easier to describe the structure of the user interface in React component
+    A. JSX stands for "Javascript XML" and it's a syntax extension for JavaScript often used with React.js JSX allows you to write HTML like code within your javascript code. Making it easier to describe the structure of the user interface in React component
 
     const element = <h1>Hello JSX!</h1>
 
-    In the example the '<h1>' element with text hello JSX is written using jsx syntax jsx allows you ti include html like tags and elements directly in your javascript code.Under the hood,JSX is transpiled(converted) into Javascript code that react can understand
+    In the example the '<h1>' element with text hello JSX is written using jsx syntax jsx allows you to include html like tags and elements directly in your javascript code. Under the hood, JSX is transpiled(converted) into Javascript code that react can understand
 
     Here how the above look like after transpilation
 
@@ -198,6 +200,20 @@ Assignment 03 - Laying the Foundation
     8.Ecosystem: JSX is a core part of the React ecosystem, which has a large and active community. This means access to a vast library of pre-built components, tutorials, and resources to help you build powerful web applications efficiently.
 
 3.  React.creteElement vs JSX
+    A.
+    JSX:
+
+    - Declarative and readable.
+    - Transpiles to `React.createElement`.
+    - Preferred for defining React components.
+
+    React.createElement:
+
+    - Programmatic and explicit.
+    - Used when you need to create elements dynamically.
+    - Lower-level approach compared to JSX.
+
+    In most cases, developers prefer JSX due to its readability and simplicity. However, JSX is ultimately transpiled into `React.createElement` calls behind the scenes.
 
 4.  Benefits of JSX
     A.
@@ -333,7 +349,7 @@ Assignment 03 - Laying the Foundation
 
     In this example, the `Content` component is composed within the `Page` component, creating a hierarchy.
 
-By composing components in React, you can build complex user interfaces in a modular and organized way, making your code easier to understand, maintain, and extend. It also encourages the reuse of components, leading to more efficient development and better code maintainability.
+    By composing components in React, you can build complex user interfaces in a modular and organized way, making your code easier to understand, maintain, and extend. It also encourages the reuse of components, leading to more efficient development and better code maintainability.
 
 Assignment 04 - Talk is cheap,Show me code!
 
