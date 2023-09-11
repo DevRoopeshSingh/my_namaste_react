@@ -396,22 +396,31 @@ Theory:
 12. What is Config Driven UI?
     A.Config-driven UI is an approach where the user interface and its behavior are defined using configuration data rather than hardcoding them into the application's code. This approach allows for
 
+/\*
 
-
-/*
-* Header
+- Header
   ->Logo
   ->Nav link
   Body
   -> Search bar
-  ->  RestaurantContainer
-      -> IMG
-      -> Star Ratting 
-      -> Name of the restaurant
-      -> cuisine,etc,delivery time
- * Footer
+  -> RestaurantContainer
+  -> IMG
+  -> Star Ratting
+  -> Name of the restaurant
+  -> cuisine,etc,delivery time
+- Footer
   -> Copyright
   -> Links
   -> Address
   -> Contact
-*/
+  \*/
+
+Two Types of Export/Import
+
+1.Default Import/Export
+-export default Component
+-import Component from "path"
+
+2.Named Export/Import
+-export const Component;
+-import {Component} from "path"

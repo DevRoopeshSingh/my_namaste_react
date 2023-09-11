@@ -1,10 +1,10 @@
-const logo = new URL("../../assets/LogoDesign.png", import.meta.url);
+const Logo = new URL("../../assets/LogoDesign.png", import.meta.url);
 
-const Header = () => {
+export const Header = () => {
   return (
     <div className="header">
       <div id="logo-container">
-        <img className="logo" src={logo} alt="logo" />
+        <img className="logo" src={Logo} alt="logo" />
       </div>
       <div className="nav-items">
         <ul>

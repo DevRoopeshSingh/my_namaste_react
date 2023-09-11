@@ -1,20 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./component/Header";
+import HeaderComponent from "./component/Header";
 import BodyComponent from "./component/BodyComponent";
-
-const FooterComponent = () => {
-  return (
-    <div className="footer">
-      &copy; 2023 Food Ordering App. All rights reserved.
-    </div>
-  );
-};
+import FooterComponent from "./component/Footer";
 
 const AppLayoutComponent = () => {
   return (
     <div className="app">
-      <Header />
+      <HeaderComponent />
       <BodyComponent />
       <FooterComponent />
     </div>
