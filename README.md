@@ -396,7 +396,7 @@ Theory:
 12. What is Config Driven UI?
     A.Config-driven UI is an approach where the user interface and its behavior are defined using configuration data rather than hardcoding them into the application's code. This approach allows for
 
-/\*
+/
 
 - Header
   ->Logo
@@ -413,7 +413,8 @@ Theory:
   -> Links
   -> Address
   -> Contact
-  \*/
+
+# React Hooks(Normal JS utility function)
 
 Two Types of Export/Import
 
@@ -425,4 +426,47 @@ Two Types of Export/Import
 -export const Component;
 -import {Component} from "path"
 
-# React Hooks(Normal JS utility function)
+Assignment 05-Let's get Hooked.
+
+Theory:
+
+1. What is the difference between Named Export, Default export and \* as export?
+   A.Named Function Export: When you export a function using its name it is known as Named function export. These export allow you to export multiple function, Variables or classes from a module by specifying their names
+   For Example:
+   export function myFunction(){
+
+   }
+   Default Export: A default export is used when you want to export a single value (function,class or Object) as the default export from a module .You can only have one default export per module.
+   For Example:
+   export default function myFunction(){
+
+   }
+
+   "\* as Export"(namespace export):The \* as export is used to export an entire module as an object it allows you to access all the exports from that module using a specific name
+   For Example: export \* as myModule from './anotherModule'
+   then you can access export from 'anotherModule' using myModule.myExport.
+
+2. What is the importance if config.js file?
+   A.'config.js' file is often used to store configuration settings for an application. its importance lie in the following aspects.
+
+   Centralized Configuration: It provides a single place to store configuration variables like API keys, database URLs, environment-specific settings, and more. This centralization simplifies configuration management.
+
+   Security: Sensitive information, such as API keys or database credentials, should not be hard-coded into your application. Storing them in a config.js file helps protect these sensitive details.
+
+   Ease of Maintenance: When configuration settings change, you only need to update the config.js file instead of searching through your codebase for scattered configuration values.
+
+   Environment Management: config.js can be used to manage configurations for different environments (development, production, testing) by switching between different configuration files or values.
+
+3. What are the React Hooks?
+   A.React Hooks are functions that allow you to "hook into" React state and lifecycle features from functional components. They were introduced in React 16.8 to enable state management, side-effects, and other React features in functional components, making them more powerful and versatile. Some commonly used hooks include useState, useEffect, useContext, and useReducer.
+
+4. Why do we need a useState Hook?
+   A.The useState hook is essential in React for managing and updating component state in functional components. Here's why it's needed:
+
+   State Management: It allows functional components to have their own state, just like class components. State is essential for managing dynamic data and UI interactions.
+
+   Reactivity: When state changes, the component re-renders, ensuring that the UI reflects the latest data. Without useState, you wouldn't have a way to manage component state.
+
+   Simplicity: The useState hook simplifies state management by providing a straightforward way to declare and update state variables within functional components, eliminating the need for class-based component syntax.
+
+   Avoiding Class Components: useState makes it possible to use functional components for most use cases, reducing the need for class components and promoting a more modern and concise coding style.
