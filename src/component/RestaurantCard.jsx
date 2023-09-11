@@ -14,7 +14,7 @@ const RestaurantCard = ({ resData }) => {
   } = resData?.info;
 
   return (
-    <div id={id} className="restaurant-card">
+    <div className="restaurant-card">
       <img
         alt="rest-image"
         className="res-logo"

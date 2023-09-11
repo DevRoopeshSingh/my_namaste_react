@@ -424,3 +424,5 @@ Two Types of Export/Import
 2.Named Export/Import
 -export const Component;
 -import {Component} from "path"
+
+# React Hooks(Normal JS utility function)

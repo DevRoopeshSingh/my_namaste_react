@@ -23,6 +23,7 @@
 .restaurant-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .restaurant-card {
@@ -53,4 +54,9 @@
   /* position: fixed; */
   text-align: center;
   background-color: #333;
+}
+
+.filter-btn {
+  margin: 10px;
+  cursor: pointer;
 }
