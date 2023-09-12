@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 const BodyComponent = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -19,8 +20,14 @@ const BodyComponent = () => {
     );
   };
 
-  console.log("Body Rendered");
-  return (
+  //conditional rendering
+  // if (restaurantList && restaurantList.length === 0) {
+  //   return <Shimmer />;
+  // }
+
+  return restaurantList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div id="body-container" className="body">
       {/* <div className="search">Search</div> */}
       {console.log("render the UI ")}
