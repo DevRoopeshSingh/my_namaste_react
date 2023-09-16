@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const BodyComponent = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -8,7 +9,7 @@ const BodyComponent = () => {
   const [searchText, setSearchText] = useState("");
 
   //When ever the state variable update,react triggers a reconciliation cycle(re-render the component)
-  console.log("Body component is re-render");
+  // console.log("Body component is re-render");
 
   useEffect(() => {
     fetchData();
@@ -66,8 +67,13 @@ const BodyComponent = () => {
         </button>
       </div>
       <div className="restaurant-container">
-        {filteredRestaurant.map((resData) => (
-          <RestaurantCard key={resData.info.id} resData={resData} />
+        {filteredRestaurant.map((restaurant) => (
+          <Link
+            to={"/restaurants/" + restaurant.info.id}
+            key={restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

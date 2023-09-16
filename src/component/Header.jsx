@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 const Logo = new URL("../../assets/LogoDesign.png", import.meta.url);
 
 export const Header = () => {
@@ -15,14 +16,25 @@ export const Header = () => {
   return (
     <div className="header">
       <div id="logo-container">
-        <img className="logo" src={Logo} alt="logo" />
+        <Link to="/">
+          <img className="logo" src={Logo} alt="logo" />
+        </Link>
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
+          <li>
+            <Link to="/Home">Home</Link>
+          </li>
+          <li>
+            {/* <a href="/About">About us</a> */}
+            <Link to="/About">About</Link>
+          </li>
+          <li>
+            <Link to="/Contact"> Contact Us</Link>
+          </li>
+          <li>
+            <Link to="/Cart">Cart</Link>
+          </li>
           <button
             className="login"
             onClick={() => {

@@ -470,3 +470,63 @@ Theory:
    Simplicity: The useState hook simplifies state management by providing a straightforward way to declare and update state variables within functional components, eliminating the need for class-based component syntax.
 
    Avoiding Class Components: useState makes it possible to use functional components for most use cases, reducing the need for class components and promoting a more modern and concise coding style.
+
+Assignment 06 - Explore the world
+
+1. What is microservice ?
+   A.A microservice is a software architecture style that structure an application as a collection of small,independent deployable service. each microservice focuses on a specific business capability and can communicate with other services through API's.
+
+2. What is microservice architecture?
+   A.Microservice architecture is an approach to designing and building software applications as a collection of loosely coupled independently deployable services.These services are organized around specific business capabilities and can
+   be developed, deployed and scaled independently.
+
+3. What is the difference between monolith and microservice?
+   A.In a monolith,the entire application is a single,tightly integrated codebase while in microservice, the application is composed of many small, independent services Monoliths are typically easier to develop but harder to scale and maintain,while microservice offers greater scalability and flexibility but can be more complex to manage.
+
+4. Why do we need useEffect Hooks?
+   A.useEffect is React hook used to perform side effects in functional components.It is used for task such as data fetching, DOM manipulation and subscribing to external data source. It allows you to manage these side effects and keep them in sync with component lifecycle.
+
+5. What is Optional chaining?
+   A. Optional chaining is a Javascript feature that allows you to safely access nested properties of an object without worrying about whether intermediate properties exist. It uses the '?' syntax to prevent errors and accessing properties of null or undefined object.
+
+6. What is Shimmer UI?
+   A.Shimmer UI is a loading animation or placeholder effect used in user interface to indicate that content is being loaded. It typically consists of subtle animation placeholder elements that mimic the appearance of real content providing a smoother user experience during loading.
+
+7. What is the difference between JS expression and JS statement.
+   A.An expression in javascript produces a value such as calculation or function call and can be part of larger expression .Statement on the other hand are standalone instruction that perform action but do not produce values for example 'x+2' is an expression while if(x > 5) {} is a statement.
+
+8. What is conditional rendering explain with a code example.
+   A.Conditional rendering in React involves rendering different JSX based on certain conditions.Here is an example:
+
+function App(){
+const isLoggedIn = true;
+
+    return(
+      <div>
+        {isLoggedIn ? (
+          <p>Welcome User!!!</p>
+        ) : (
+          <p>Please log in to access your account</p>
+        )}
+      </div>
+    )
+
+}
+
+9. What is CORS?
+   A.CORS(Cors Origin Resource Sharing) is a security feature implemented by web browser to control and restrict request made from one domain (origin) to another. it prevents unauthorized access to resources on different domains and ensure security in web application.
+
+10. What is async and await?
+    A.async and await is keyword in javascript used for asynchronous programming async is used to define an asynchronous function and await is used inside an async function to pause execution until promise is resolved, making asynchronous code more readable and manageable.
+
+11. What is the use of const json = await data.json(); in getRestaurants()?
+    A.The code is typically used in a function that fetches data from an API it awaits the response (data) abd then converts it to a JSON format using the json() method. The results is stored in the json constant allowing you to work with the data as a javascript object.
+
+# Types of Routing in web page
+
+React Router Dom
+
+React is single page application because it supports Client Side Routing where everything is loaded before we just need to interchange the component it does not make any network call not fetching any new page.
+
+- Client side routing
+- Server side routing
