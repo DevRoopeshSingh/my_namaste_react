@@ -91,3 +91,9 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
+
+.user-card {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
