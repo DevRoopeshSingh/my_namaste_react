@@ -97,3 +97,9 @@ a:active {
   margin-bottom: 10px;
   border: 1px solid black;
 }
+
+.avatar-img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+}

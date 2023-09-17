@@ -1,15 +1,60 @@
 import User from "./User";
 import UserClass from "./UserClass";
+import React from "react";
 
-const About = () => {
-  return (
-    <div className="about-page">
-      <h1>About Page</h1>
-      <h2>This is Namaste react Page</h2>
-      <User />
-      <UserClass />
-    </div>
-  );
-};
+class About extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      userInfo: {},
+    };
+  }
+
+  async componentDidMount() {
+    const data = await fetch("https://api.github.com/users/DevRoopeshSingh");
+    const jsonData = await data.json();
+    console.log("Inside the About page", jsonData);
+    this.setState({ userInfo: jsonData });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.count !== prevState.count) {
+      console.log("Run this line of code", prevState.count);
+    }
+    console.log("Component Did Update in About page");
+
+    this.timer = setInterval(() => {
+      console.log("Set Interval has been trigger");
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
+  }
+
+  render() {
+    return (
+      <div className="about-page">
+        <h1>About Page</h1>
+        <h2>This is Namaste react Page</h2>
+        <h3>Count:{this.state.count}</h3>
+        <button
+          onClick={() =>
+            this.setState(
+              { count: this.state.count + 1 },
+              console.log("State has been changed")
+            )
+          }
+          className="btn-click"
+        >
+          Button
+        </button>
+        <UserClass userInfo={this.state.userInfo} />
+        <User userInfo={this.state.userInfo} />
+      </div>
+    );
+  }
+}
 
 export default About;
