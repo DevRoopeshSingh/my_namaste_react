@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../utils/useOnlineStatus";
+
+import useGeoLocation from "../utils/useGeoLocation";
 const Logo = new URL("../../assets/LogoDesign.png", import.meta.url);
 
 export const Header = () => {
   const [btnName, setBtnName] = useState("Login");
-  const isOnline = useOnlineStatus();
+
+  //const location = useGeoLocation();
+  //console.log("location", location);
 
   // If no dependency array then it will called on every render
   // If dependency array is empty then useEffect is called on initial render just once for the first time
@@ -15,17 +18,22 @@ export const Header = () => {
   }, [btnName]);
 
   return (
-    <div className="header">
-      <div id="logo-container">
-        <Link to="/">
-          <img className="logo" src={Logo} alt="logo" />
-        </Link>
+    <div className="flex justify-between m-8 p-4 bg-slate-100 ">
+      <div className="flex items-center">
+        <div id="logo-container">
+          <Link to="/">
+            <img className="logo w-[100] rounded-xl" src={Logo} alt="logo" />
+          </Link>
+        </div>
+        <div className="mx-4">
+          <span>Bengaluru, Karnataka 560037, India</span>
+        </div>
       </div>
-      <div className="nav-items">
-        <ul>
-          <li>Status:{isOnline ? "✅" : "🔴"}</li>
+
+      <div className="flex justify-between items-center">
+        <ul className="flex space-x-6">
           <li>
-            <Link to="/Home">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             {/* <a href="/About">About us</a> */}

@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
-import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-import useOnlineStatus from "../utils/useOnlineStatus";
+import MenuCard from "./MenuCard";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
-  const isOnline = useOnlineStatus();
-  console.log("Checking Status", isOnline);
 
   if (resInfo === null) {
     return <Shimmer />;
   }
-
-  if (isOnline === false)
-    return <h1>You are offline, Please check your internet connection </h1>;
 
   const { name, cuisines, costForTwoMessage } =
     resInfo?.cards[0]?.card?.card?.info;
@@ -28,22 +22,24 @@ const RestaurantMenu = () => {
   console.log("itemsCards", itemsCards);
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
-        {cuisines.join(", ")} - {costForTwoMessage}
-      </p>
-      <h3>Menu</h3>
-      <ul>
-        {itemsCards.map(({ card }) => {
-          return (
-            <li key={card.info.id}>
-              {card.info.name} - ₹
-              {card.info.defaultPrice || card.info.price / 100}
-            </li>
-          );
-        })}
-      </ul>
+    <div className="menu flex justify-center flex-col items-center ">
+      <div className="card-container w-1/2 bg-slate-50">
+        <div className="restaurant-header-wrapper pt-1">
+          <h1>{name}</h1>
+        </div>
+        <p className="mb-2">{cuisines.join(", ")}</p>
+
+        <div className="menu-list mb-5">
+          <div className="m-2">
+            <h3>Recommended{"(" + itemsCards.length + ")"}</h3>
+          </div>
+          <ul>
+            {itemsCards.map(({ card }) => {
+              return <MenuCard card={card} />;
+            })}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };
