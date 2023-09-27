@@ -1,5 +1,6 @@
 import { CDN_URL } from "../utils/constants";
 
+
 const RestaurantCard = ({ resData }) => {
   // const { resName, cuisine } = props;
   const {
@@ -24,7 +25,7 @@ const RestaurantCard = ({ resData }) => {
         src={`${CDN_URL + cloudinaryImageId}`}
       />
       <div className="m-3">
-        <h3 className="text-3xl">{name}</h3>
+        <h3 className="text-3xl mb-2 overflow-hidden">{name}</h3>
         <h4>{cuisines.join(", ")}</h4>
         <h4>✩ {avgRating} stars</h4>
         {/* <h4>{feeDetails.totalFee}</h4> */}
@@ -35,4 +36,25 @@ const RestaurantCard = ({ resData }) => {
   );
 };
 
+
+export const withOfferRestaurantCard = (RestaurantCard) =>{ 
+  return (propsData) => {
+    return (
+     <div className="relative">
+        <label className="absolute bg-black text-white m-4 p-2 rounded-lg z-10">{propsData.offerText}</label>
+        <RestaurantCard {...propsData} /> 
+     </div>
+    );
+  }
+}
+  
+
+
 export default RestaurantCard;
+
+
+
+
+
+
+

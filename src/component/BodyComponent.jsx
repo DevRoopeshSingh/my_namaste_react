@@ -1,18 +1,19 @@
 import { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withOfferRestaurantCard} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { RESTAURANT_LIST_API } from "../utils/constants";
 import OfferContainer from "./OfferContainer";
+
+
 
 const BodyComponent = () => {
   const [restaurantList, setRestaurantList] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [bannerList, setBannerList] = useState([]);
-
-  //When ever the state variable update,react triggers a reconciliation cycle(re-render the component)
-  // console.log("Body component is re-render");
+  const RestaurantCardOffer = withOfferRestaurantCard(RestaurantCard)
+  
 
   useEffect(() => {
     fetchData();
@@ -21,7 +22,7 @@ const BodyComponent = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_LIST_API);
     const json = await data.json();
-    console.log("Json Data", json);
+    console.log("Json Data", json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setRestaurantList(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -83,7 +84,15 @@ const BodyComponent = () => {
               to={"/restaurants/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard resData={restaurant} />
+              {
+                restaurant.info.aggregatedDiscountInfoV3?.header ?
+                  <RestaurantCardOffer resData={restaurant} offerText={restaurant.info.aggregatedDiscountInfoV3?.header} />
+                 
+                :
+                 <RestaurantCard resData={restaurant} /> 
+                
+              }
+              
             </Link>
           ))}
         </div>

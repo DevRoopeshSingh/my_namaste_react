@@ -1,5 +1,6 @@
+
 const OfferContainer = ({ banners }) => {
-  console.log("Logs prop", banners);
+  console.log("Logs prop banner", banners);
   return (
     <div>
       <div className="best-offers-container mx-4">
@@ -30,3 +31,7 @@ const OfferContainer = ({ banners }) => {
 };
 
 export default OfferContainer;
+
+
+
+
