@@ -1,11 +1,21 @@
-import { DEMO_DATA } from "../utils/constants";
+import { useState } from "react";
+import { CDN_URL } from "../utils/constants"
 
+  
 const MenuCategory = ({ itemCard }) => {
-    const cardItem  = itemCard.card;
-    return <div className="menu-category rounded-t-lg border-b-8" >
-        <div className="flex justify-between bg-slate-200">
-            <h2 className="font-bold ">{cardItem.title} ({cardItem.itemCards.length})</h2>
-            <div>
+    
+    const cardItem = itemCard.card;
+    
+    const [showItems, setShowItems] = useState(false)
+    
+    const handleOnClick = () => { 
+       setShowItems(!showItems)
+    }
+
+    return <div className="menu-category rounded-t-lg border-b-8 rounded-md shadow-lg" >
+        <div className="flex justify-between  cursor-pointer" onClick={handleOnClick}>
+            <div className="mt-4 mx-4 font-bold ">{cardItem.title} ({cardItem.itemCards.length})</div>
+            <div className="m-4">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -20,18 +30,30 @@ const MenuCategory = ({ itemCard }) => {
                 </svg>
             </div>
         </div>
-        {cardItem.itemCards.map(({ card } ) => { 
+        {showItems && 
+        cardItem.itemCards.map(({ card } ) => { 
             { console.log("info map",card.info)}
-            return <div className="flex justify-between py-2 my-2 mb-4 border-b-4 border-gray-200">
-                <div className="mx-2 p-2">  
+            return <div key={ card.info.id } className="flex justify-between py-2 my-2 mb-4 border-b-4 border-gray-200">
+                <div className="mx-2 m-2 p-2 w-full flex justify-between">  
+                <div className="m-2 p-2 w-8/12">
                 <div className="font-semibold mb-2">{card.info.name}</div>
                 <div className="font-normal">₹{card.info.price ? card.info.price / 100 : card.info.defaultPrice}</div>
-                    <p className="text-xs my-4 mb-8">{card.info.description}</p>
+                    <p className="text-xs my-4 mb-8 text-ellipsis">{card.info.description}</p>        
                 </div>
-                <img scr={""+card.info.imageId} />
+                    <div className="image-container w-1/3 flex justify-center items-center">
+                        <div className="w-40">
+                        <img className="my-5" src={CDN_URL+card.info.imageId} />
+                        </div>
+                    <button className="bg-white font-bold absolute rounded-md w-20 mt-20 text-green-500 ">ADD</button>
+                </div>
+                </div>
+               
+                
             </div>  
         })
-        } 
+         
+        }
+        
        
     </div>
 }
