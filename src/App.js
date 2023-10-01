@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { lazy, Suspense, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import HeaderComponent from "./component/Header";
@@ -16,9 +16,12 @@ import OfflineAlert from "./component/OfflineAlert";
 const Grocery = lazy(() => import("./component/Grocery"));
 const About = lazy(() => import("./component/About"));
 
+import UserContext from "./utils/UserContext";
+
 const AppLayoutComponent = () => {
   const isOnline = useOnlineStatus();
-
+  const { loggedInUser } = useContext(UserContext);
+  console.log("loggedInUser", loggedInUser);
   return (
     <div className="app relative overflow-hidden">
       {isOnline ? (
