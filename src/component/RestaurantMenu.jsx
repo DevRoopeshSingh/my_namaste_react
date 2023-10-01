@@ -3,10 +3,17 @@ import Shimmer from "./Shimmer";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import MenuCard from "./MenuCard";
 import MenuCategory from "./MenuCategory";
+import UserContext from "../utils/UserContext";
+import { useState,useContext } from "react";
+
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
+  const [showIndex, setShowIndex] = useState(0);
+  const { loggedInUser} = useContext(UserContext);
+  console.log("Context data",loggedInUser)
+
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -28,23 +35,6 @@ const RestaurantMenu = () => {
 
   return (
     <div className="menu flex justify-center flex-col items-center ">
-      {/* <div className="card-container w-1/2 bg-slate-50">
-        <div className="restaurant-header-wrapper pt-1">
-          <h1>{name}</h1>
-        </div>
-        <p className="mb-2 mx-5">{cuisines.join(", ")}</p>
-
-        <div className="menu-list mb-5">
-          <div className="m-2 mx-5">
-            <h3>Recommended{"(" + itemsCards.length + ")"}</h3>
-          </div>
-          <ul>
-            {itemsCards.map(({ card }) => {
-              return <MenuCard card={card} />;
-            })}
-          </ul>
-        </div>
-      </div> */}
       <div className="bg-gray-100 w-9/12 m-5 p-2 text-center">
         <div>
           <h1>{name}</h1>
@@ -56,7 +46,12 @@ const RestaurantMenu = () => {
       <div className=" w-9/12">
         {
           ItemCategory.map(({ card }, index) => { 
-            return <MenuCategory itemCard={ card} />
+            return <MenuCategory
+              itemCard={card}
+              key={card.card.title}
+              showIndex={index === showIndex ? true : false}
+              setShowIndex={ ()=> setShowIndex(index === showIndex ? null:index)}
+            />
           })
         }
       </div>

@@ -530,3 +530,270 @@ React is single page application because it supports Client Side Routing where e
 
 - Client side routing
 - Server side routing
+
+
+# 07 - Finding the Path
+
+1. what is the various way to add an image into our app with the code example?
+A.In React, you can add images using the img HTML tag or by importing them and using them as components. 
+Here are two common ways: 
+Using the img tag:<img src="path/to/your/image.jpg" alt="Description of the image" />
+Using the import statement:
+import React from 'react';
+import yourImage from './path/to/your/image.jpg';
+
+function App() {
+  return (
+    <div>
+      <img src={yourImage} alt="Description of the image" />
+    </div>
+  );
+}
+
+export default App;
+
+2. what would happen if we do console.log(useState())?
+A.If you do console.log(useState()), it will log an array with two elements: the current state value and the state updater function. It won't provide any meaningful information about the state value itself. Typically, you should initialize the state with an initial value, like this:
+const [count, setCount] = useState(0);
+console.log(count); // Logs the current value of 'count'
+
+3. how the useEffect behave if we don't add dependency array.
+A.If you don't provide a dependency array in the useEffect hook, the effect will run after every render, including the initial render. This can lead to performance issues or unexpected behavior, especially if the effect contains state-changing logic. It's generally a good practice to specify dependencies to control when the effect should run.
+
+
+4. What is SPA?
+A.A Single Page Application (SPA) is a web application or website that loads a single HTML page and dynamically updates its content as the user interacts with it, without requiring full page reloads. SPAs use client-side routing and often make use of JavaScript frameworks like React to provide a smoother and more interactive user experience.
+
+5. What is difference between client side routing and server side routing?
+A.Client-side routing: In client-side routing, the routing logic is handled by the web browser on the client side. When a user clicks a link or enters a URL, JavaScript running in the browser updates the content on the current page without requesting a new page from the server. React Router is an example of a library used for client-side routing.
+
+Server-side routing: In server-side routing, the routing logic is handled by the web server. When a user interacts with the application, the browser sends a request to the server, which responds with a new HTML page. Server-side routing typically involves full page reloads. Traditional server-rendered web applications use this approach.
+
+The main difference is that client-side routing provides a faster and more seamless user experience because it doesn't require full page reloads, while server-side routing can be slower but is often easier to implement for SEO and server-side rendering purposes.
+
+# 8.Let's get Classy
+
+1. How do you create a nested routes react-router-dom configuration.
+A.Nested routes in react-router-dom can be created by rendering child routes within the component of a parent route. Here's a basic example:
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/products" component={Products} />
+      </Switch>
+    </Router>
+  );
+}
+
+function Products() {
+  return (
+    <div>
+      <h2>Products</h2>
+      <Route path="/products/category1" component={Category1} />
+      <Route path="/products/category2" component={Category2} />
+    </div>
+  );
+}
+
+In this example, the Products component contains nested routes for different product categories
+
+
+2. Read about the createHashRouter, CreateMemoryRouter from the react router docs.
+A. createHashRouter: It's a legacy routing solution primarily used for hash-based routing. It creates a router that uses the URL hash to navigate between views. It's less common than BrowserRouter for modern applications.
+
+createMemoryRouter: It creates a router that doesn't rely on the browser's URL. It's useful for testing and server-side rendering scenarios where there may not be a browser environment.
+
+3. what is the order of the life cycle call in class based component.
+A. The order of lifecycle calls in a class-based component is as follows:
+    constructor()
+    static getDerivedStateFromProps()
+    render()
+    componentDidMount()
+    shouldComponentUpdate()
+    getSnapshotBeforeUpdate()
+    componentDidUpdate()
+    componentWillUnmount()
+
+4. why do we use componentDidMount ? 
+componentDidMount is used for side effects and actions that need to happen after the component has been added to the DOM. Common use cases include data fetching, setting up subscriptions, and interacting with the DOM. It's called once after the initial render
+
+5. why do we use componentWillUnmount show the example ? 
+A. componentWillUnmount is used to clean up resources or perform actions before the component is removed from the DOM. Here's an example:class MyComponent extends React.Component {
+          intervalId = null;
+
+          componentDidMount() {
+            this.intervalId = setInterval(() => {
+              console.log('Interval tick');
+            }, 1000);
+          }
+
+          componentWillUnmount() {
+            clearInterval(this.intervalId);
+            console.log('Component unmounted');
+          }
+
+          render() {
+            return <div>Component with interval</div>;
+          }
+        }
+
+
+6. why do we use super props in constructor ? 
+A. In a class-based component's constructor, super(props) is used to call the constructor of the parent class (i.e., React.Component). It's necessary to ensure that the component is initialized correctly and has access to this.props. Without super(props), this.props would be undefined in the constructor.
+
+7. why we can't have callback function of useEffect async ? 
+A. You can have an async function inside a useEffect, but you should be cautious when using it. The reason is that useEffect expects its callback function to return either nothing or a cleanup function (for clean-up purposes). An async function returns a promise, which is not a valid return type for useEffect.
+
+However, you can work around this by defining an async function inside the useEffect and immediately invoking it:
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const response = await fetch('https://example.com/data');
+          const data = await response.json();
+          // Use 'data' here
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      }
+
+      fetchData();
+    }, []); // Empty dependency array means it runs once on mount
+
+In this example, we define and immediately invoke the fetchData function inside useEffect, allowing you to use async/await within it
+
+# 09 -  Optimizing our app
+
+1. when and Why do we need Lazy() ?
+A.Lazy() is used for code splitting in React applications. It allows you to load a component lazily, which means it is loaded only when needed, improving the initial loading performance of your application. You should use Lazy() when your application has large components that are not needed immediately, but rather on-demand, such as for routes or dialogs.
+
+2. what is suspense ?
+A.Suspense is a React feature that allows components to suspend rendering while they load data asynchronously. It enables a better user experience by showing fallback content (e.g., a loading indicator) while waiting for the data to load. Suspense simplifies handling asynchronous operations in your components.
+
+3. why we get this error : A component is suspended while responding to the synchronous input. This will cause the ui with loading indicator to fix update and that suspend should be wrapped with startTransition How does suspense fix this error ?
+A.This error occurs when a component attempts to suspend while rendering synchronously in response to user input. It can lead to UI flickering issues. Suspense addresses this by introducing the startTransition function, which allows you to indicate that a part of your component's rendering can be deferred without causing flickering. Wrapping the suspend operation with startTransition tells React to treat it as low-priority, ensuring a smoother user experience.
+
+4. Advantage and Disadvantage of using the code splitting pattern ?
+A.
+    Advantages:
+
+        Faster Initial Load: Code splitting reduces the initial bundle size, leading to faster loading times for your application.
+        
+        Improved Performance: Smaller bundles result in improved page rendering and interactivity.
+        
+        Better Caching: Smaller bundles are more cache-friendly, as they change less frequently.
+        
+        Scalability: Code splitting makes it easier to manage and scale large applications by loading only the necessary code.
+    
+    Disadvantages:
+
+        Complexity: Implementing code splitting may add complexity to your application's build and deployment processes.
+        Potential for Overhead: Overuse of code splitting can lead to too many small chunks, increasing HTTP request overhead.
+        Not Suitable for All Apps: Smaller applications may not benefit significantly from code splitting and could introduce unnecessary complexity.
+
+        Scalability: Code splitting makes it easier to manage and scale large applications by loading only the necessary code.
+        Disadvantages:
+
+        Complexity: Implementing code splitting may add complexity to your application's build and deployment processes.
+        Potential for Overhead: Overuse of code splitting can lead to too many small chunks, increasing HTTP request overhead.
+        Not Suitable for All Apps: Smaller applications may not benefit significantly from code splitting and could introduce unnecessary complexity.
+
+
+5. When and why do need suspense ?
+A.Suspense is needed when you want to handle asynchronous data loading elegantly in your React components. You should use Suspense                  
+    when:
+    You need to load data or components asynchronously.
+    You want to display loading indicators or fallback content while waiting for data to arrive.
+    You want to simplify and centralize the handling of asynchronous operations in your application.
+    You want to improve the user experience by avoiding UI flickering during data loading.
+
+    Suspense simplifies asynchronous data fetching and helps maintain a smooth and responsive user interface. It's particularly useful in modern web applications where data loading is a common operation.
+
+# 10. Jo Dikhta hai woh Bikta hai
+
+1. explore all the way of writing the css.
+A.
+CSS can be written in various ways, including:
+
+Inline Styles: Adding CSS directly to HTML elements using the style attribute.
+Internal Stylesheets: Using <style> tags within the HTML document's <head> section.
+External Stylesheets: Creating separate .css files and linking them to HTML files using the <link> element.
+CSS-in-JS: Using JavaScript libraries like Styled-components, Emotion, or JSS to define CSS in JavaScript files.
+Preprocessors: Writing CSS with the help of CSS preprocessors like Sass, Less, or Stylus.
+CSS Frameworks: Using CSS frameworks like Bootstrap, Foundation, or Tailwind CSS to style web applications quickly.
+
+
+2. how do we configure the tailwind.
+
+Configuring Tailwind CSS involves creating a tailwind.config.js file in the root of your project. You can generate this file using npx tailwindcss init. Inside the configuration file, you can customize various aspects of Tailwind, including colors, fonts, spacing, and more. You can also enable or disable specific features and plugins.
+
+module.exports = {
+  purge: [],
+  darkMode: false,
+  theme: {
+    extend: {},
+  },
+  variants: {},
+  plugins: [],
+};
+
+
+3. In tailing config what does all the key mean(context,theme,extend,plugins)
+A.context: This key is used to specify the context in which Tailwind CSS should be applied. It's often used with frameworks like  React or Vue.js, where you may want to apply different styles based on the framework's context.
+
+    theme: The theme key allows you to customize various aspects of your design system, such as colors, typography, spacing, and more. You can extend the default theme or completely replace it with your own.
+
+    extend: The extend key lets you add additional utility classes or customize existing ones. It's useful when you want to add custom styles that are not included in the default Tailwind CSS.
+
+    plugins: The plugins key is used to configure and enable third-party plugins for Tailwind CSS. Plugins can add new utility classes or modify existing ones, providing additional functionality.
+
+4. why do we have postcssrc file?
+  A.The postcss.config.js (or .postcssrc.js) file is used to configure PostCSS, which is a CSS post-processing tool. PostCSS allows you to transform your CSS with JavaScript plugins. In the context of Tailwind CSS, it's commonly used to process and optimize the CSS generated by Tailwind.
+
+  Some common tasks handled by PostCSS in a Tailwind CSS project include autoprefixing, minification, and purging unused CSS classes. The postcss.config.js file allows you to define which PostCSS plugins to use and configure their behavior.
+
+  Here's a basic example of a postcss.config.js file:
+  module.exports = {
+    plugins: {
+      autoprefixer: {},
+      'postcss-preset-env': {},
+      cssnano: {},
+    },
+  };
+
+
+  # 11 -  Data is new Oil
+
+1. What is prop drilling?
+A.Prop drilling (also known as "prop passing" or "component nesting") is a pattern in React where data is passed down through multiple levels of nested components as props, even if some intermediate components do not need the data. It can make the code harder to maintain and lead to readability issues because components that don't use the data still need to pass it down. To address this issue, you can use context or state management libraries like Redux to avoid excessive prop drilling.
+
+2. what is lifting the state up?
+A.Lifting state up is a React pattern where you move the state of a component higher up in the component tree to make it accessible to multiple child components that need the same data. By doing this, you centralize the state management, avoid prop drilling, and ensure that the data is consistent across all components that depend on it.
+
+3. what is the context provider and context consumer ?
+A.In React, context is a mechanism for sharing data between components without having to explicitly pass props through all levels of the component tree. It consists of two main parts:
+
+Context Provider: This is a component that provides the data (context) to its child components. It typically wraps a part of the component tree and uses the Provider component from React.createContext to make the data available to its descendants.
+
+Context Consumer: This is a component that consumes the context data. It can access the data provided by the context provider without explicitly receiving it as props. The Consumer component from React.createContext is used within these components to access the context.
+
+4. if you don't pass the value to the provider does it take the default value ?
+A.Yes, if you don't pass a value to the context provider, it will use the default value specified when creating the context using React.createContext. Here's an example:
+const MyContext = React.createContext('default value');
+
+// ...
+
+<MyContext.Provider> // No 'value' prop provided
+  {/* Child components can access the default value */}
+</MyContext.Provider>
+
+In this example, if you don't provide a value prop to the MyContext.Provider, it will use the default value 'default value'. Any child components that consume this context will receive this default value unless overridden explicitly by a value prop higher up in the component tree.
+
+
+
+
+
+
+

@@ -23,15 +23,9 @@ class About extends React.Component {
       console.log("Run this line of code", prevState.count);
     }
     console.log("Component Did Update in About page");
-
-    this.timer = setInterval(() => {
-      console.log("Set Interval has been trigger");
-    }, 1000);
   }
 
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
+
 
   render() {
     return (
@@ -40,16 +34,18 @@ class About extends React.Component {
         <h2>This is Namaste react Page</h2>
         <h3>Count:{this.state.count}</h3>
         <button
+         
           onClick={() =>
             this.setState(
               { count: this.state.count + 1 },
               console.log("State has been changed")
             )
           }
-          className="btn-click"
+          className="btn-click bg-slate-200 p-2 m-2 rounded-md"
         >
           Button
         </button>
+    
         <UserClass userInfo={this.state.userInfo} />
         <User userInfo={this.state.userInfo} />
       </div>
