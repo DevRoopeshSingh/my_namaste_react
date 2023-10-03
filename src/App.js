@@ -13,10 +13,15 @@ import RestaurantMenu from "./component/RestaurantMenu";
 //import Grocery from "./component/Grocery";
 import useOnlineStatus from "./utils/useOnlineStatus";
 import OfflineAlert from "./component/OfflineAlert";
+import { Provider } from "react-redux";
+
+
 const Grocery = lazy(() => import("./component/Grocery"));
 const About = lazy(() => import("./component/About"));
 
+
 import UserContext from "./utils/UserContext";
+import appStore from "./utils/appStore";
 
 const AppLayoutComponent = () => {
   const isOnline = useOnlineStatus();
@@ -25,11 +30,13 @@ const AppLayoutComponent = () => {
   return (
     <div className="app relative overflow-hidden">
       {isOnline ? (
-        <>
+        <Provider store={appStore}>
           <HeaderComponent />
           <Outlet />
           <FooterComponent />
-        </>
+        </Provider>
+          
+        
       ) : (
         <OfflineAlert />
       )}

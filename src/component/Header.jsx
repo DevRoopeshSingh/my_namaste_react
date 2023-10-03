@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import useGeoLocation from "../utils/useGeoLocation";
+import { useSelector } from "react-redux";
 const Logo = new URL("../../assets/LogoDesign.png", import.meta.url);
 
 export const Header = () => {
@@ -16,6 +17,10 @@ export const Header = () => {
   useEffect(() => {
     console.log("useEffect called onload in Header Component");
   }, [btnName]);
+
+
+  const cartItems =  useSelector((store)=> store.cart.items)
+  console.log("cart items",cartItems)
 
   return (
     <div className="flex justify-between m-8 p-4 bg-slate-100 ">
@@ -45,8 +50,8 @@ export const Header = () => {
           <li>
             <Link to="/Grocery">Grocery</Link>
           </li>
-          <li>
-            <Link to="/Cart">Cart</Link>
+          <li className="px-4 font-bold text-xl ">
+           <Link to="/Cart" >Cart-({cartItems.length} items)</Link>
           </li>
           <button
             className="login"
