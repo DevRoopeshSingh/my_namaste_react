@@ -793,7 +793,25 @@ In this example, if you don't provide a value prop to the MyContext.Provider, it
 
 
 
+# Redux Toolkit
+
+ - Install @reduxjs/toolkit and react-redux
+ - Build our store
+ - Connect our store to our app
+ - Slice( cartSlice )
+ - Dispatch( action )
+ - Selector
+ 
+
+# Types of Testing(developer)
+- Unit Testing (one unit of code like : header , footer , main , aside)
+- Integration Testing (testing the )
+- End to End Testing - e2e testing (require tool like cypress,selenium etc)
 
 
-
-
+# Setting UP Testing in our APP
+ - Install testing library
+ - Install jest 
+ - Installed Babel dependencies 
+ - Configure the Babel 
+ - Configure Parcel Config file to disable default babel transpilation
