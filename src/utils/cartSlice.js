@@ -14,6 +14,7 @@ const cartSlice =  createSlice({
         },
         removeItem:(state)=>{
             state.items.pop();
+            
         },
         // original state ["pizza"]
     clearCart:(state)=>{
