@@ -815,3 +815,9 @@ In this example, if you don't provide a value prop to the MyContext.Provider, it
  - Installed Babel dependencies 
  - Configure the Babel 
  - Configure Parcel Config file to disable default babel transpilation
+ - Jest - Configuration - npx jest --init
+ - Install JS Dom library 
+ - Install @babel/preset-react - to make jsx in test cases
+ - Include @babel/preset - react inside my babel config
+ - Include npm install --save-dev @testing-library/jest-dom
+ 
